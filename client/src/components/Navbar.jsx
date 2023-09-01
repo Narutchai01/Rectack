@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <div className="h-24 mx-auto px-4 w-[100%] shadow-md">
-            <div className='flex container justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
+            <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
                 <h1 className="w-full text-3xl font-bold text-[#CB160E]">Rectack</h1>
                 <ul className="hidden md:flex">
                     <li className="p-4"><Link to='/'>STACK</Link></li>
