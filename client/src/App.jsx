@@ -1,24 +1,24 @@
+import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import Hero from "./components/Hero"
-import { Route, Routes } from "react-router-dom"
-import AboutPage from "./pages/AboutPage"
-
+import StackPage from "./pages/StackPage"
+import CommuPage from "./pages/CommuPage"
+import Chatbot from "./pages/Chatbot"
+import ArticlePage from "./pages/ArticlePage"
 function App() {
   return (
     <>
-      <div>
-        <Navbar />
-        <Hero />
-      </div>
-
+      <Navbar />
 
 
       <Routes>
-        <Route path="/about" element={<AboutPage/>} />
+        <Route path="/" element={<StackPage />} />
+        <Route path="/community" element={<CommuPage/>} />
+        <Route path="/chatbot" element={<Chatbot/>} />
+        <Route path="/articles" element={<ArticlePage/>} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+
       </Routes>
-
     </>
-
   )
 }
 

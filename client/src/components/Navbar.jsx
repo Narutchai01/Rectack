@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-    const [nav, setNav] = useState(false)
+    const [nav, setNav] = useState(true)
 
     const handleNav = () => {
         setNav(!nav)
@@ -10,13 +11,13 @@ const Navbar = () => {
 
     return (
         <div className="h-24 mx-auto px-4 w-[100%] shadow-md">
-            <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
+            <div className='flex container justify-between items-center h-24 max-w-[1240px] mx-auto px-4'>
                 <h1 className="w-full text-3xl font-bold text-[#CB160E]">Rectack</h1>
                 <ul className="hidden md:flex">
-                    <li className="p-4">STACK</li>
-                    <li className="p-4">COMMUNITY</li>
-                    <li className="p-4">ARTICLE</li>
-                    <li className="p-4">CHATBOT</li>
+                    <li className="p-4"><Link to='/'>STACK</Link></li>
+                    <li className="p-4"><Link to='/community'>COMMUNITY</Link></li>
+                    <li className="p-4"><Link to='/articles'>ARTICLE</Link></li>
+                    <li className="p-4"><Link to='/chatbot' >CHATBOT</Link></li>
                 </ul>
                 <div onClick={ handleNav } className='block md:hidden'>
                     { !nav ? <AiOutlineClose size={ 20 } /> : <AiOutlineMenu size={ 20 } /> }
