@@ -4,10 +4,13 @@ import StackPage from "./pages/StackPage"
 import CommuPage from "./pages/CommuPage"
 import Chatbot from "./pages/Chatbot"
 import ArticlePage from "./pages/ArticlePage"
+import CommunityFeed from "./components/CommunityFeed"
+
 function App() {
   return (
     <>
-      <Navbar />
+      <CommuPage/>
+      {/* <Navbar />
 
 
       <Routes>
@@ -17,7 +20,7 @@ function App() {
         <Route path="/articles" element={<ArticlePage/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
 
-      </Routes>
+      </Routes> */}
     </>
   )
 }
