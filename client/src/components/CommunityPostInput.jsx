@@ -1,12 +1,31 @@
-function CommunityPostInput() {
+import { useState } from 'react';
+
+function CommunityPostInput(props) {
+
+    const [post,setPost] = useState('');
+
+    const inputPost = (event) =>{
+        setPost(event.target.value);
+    }
+
+    const saveItem = (event) =>{
+        event.preventDefault();
+        const itemData = {post:post};
+        props.addPost(itemData);
+        setPost('');
+    }
+
     return (
         <>
-                <form className="mx-auto w-[50%] bg-white border border-gray-300 shadow-sm p-4 rounded-xl fixed">
+                <form className="mx-auto w-[50%] mt-10 bg-white border border-gray-300 shadow-sm p-4 rounded-xl fixed" onSubmit={saveItem}>
                     <div className="mb-4">
                         <label className="mx-2 block font-bold text-md text-gray-700 mb-2">What is your question today?</label>
                         <input
+                            type='text'
                             placeholder="Ask community..."
                             className="block w-full py-4 border-grey-500 border-b-2 shadow-sm sm:text-sm focus:outline-none focus:ring-red-100 focus:border-red-500"
+                            onChange={inputPost}
+                            value={post}
                         />
                     </div>
                     <div className="flex justify-between items-center">

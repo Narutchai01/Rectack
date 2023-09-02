@@ -9,7 +9,7 @@ const CommuPage = () => {
         <div className="w-[25%] m-10">
             <CommunitySidebar/>
         </div>
-        <div className="w-[50%] mt-10">
+        <div className="w-[50%]">
           <CommunityFeed />
         </div>
       </div>

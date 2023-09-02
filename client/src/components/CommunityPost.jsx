@@ -1,13 +1,16 @@
 import CommunityPostItem from "./CommunityPostItem.jsx";
 
-function CommunityPost() {
+function CommunityPost(props) {
+    const {items} = props;
     return (
         <>
-            <CommunityPostItem/>
-            <CommunityPostItem/>
-            <CommunityPostItem/>
+            <ul className="mt-[26%]">
+                {items.map((element) => {
+                    return <CommunityPostItem {...element}/>
+                })}
+            </ul>
         </>
-    )
+    );
 }
 
 export default CommunityPost;
