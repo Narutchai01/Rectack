@@ -4,6 +4,8 @@ import StackPage from "./pages/StackPage"
 import CommuPage from "./pages/CommuPage"
 import Chatbot from "./pages/Chatbot"
 import ArticlePage from "./pages/ArticlePage"
+import SelectStackPage from "./pages/SelectStackPage"
+
 function App() {
   return (
     <>
@@ -15,6 +17,7 @@ function App() {
         <Route path="/community" element={<CommuPage/>} />
         <Route path="/chatbot" element={<Chatbot/>} />
         <Route path="/articles" element={<ArticlePage/>} />
+        <Route path="/stack" element={<SelectStackPage/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
 
       </Routes>
