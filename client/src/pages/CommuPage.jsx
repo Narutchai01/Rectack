@@ -5,12 +5,12 @@ import CommunitySidebar from '../components/CommunitySidebar';
 const CommuPage = () => {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center h-screen">
         <div className="w-[25%] m-10">
-            <CommunitySidebar/>
+          <CommunitySidebar />
         </div>
-        <div className="w-[50%]">
-          <CommunityFeed />
+        <div className="w-[50%] flex flex-col">
+            <CommunityFeed/>
         </div>
       </div>
     </>

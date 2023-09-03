@@ -4,7 +4,7 @@ function CommunityPost(props) {
     const {items} = props;
     return (
         <>
-            <ul className="mt-[26%]">
+            <ul className="">
                 {items.map((element) => {
                     return <CommunityPostItem {...element}/>
                 })}

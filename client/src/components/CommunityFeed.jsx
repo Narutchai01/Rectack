@@ -14,15 +14,14 @@ function CommunityFeed() {
 
   return (
     <>
-      <div className="w-full">
-        <CommunityPostInput addPost={addPostHandler}/>
-      </div>
-      <div className="w-full h-auto flex flex-col items-center justify-center">
-        <div className="w-full overflow-y-auto">
-          <div className="mb-[20%]"/>
-          <div className="fixed border-[1px] w-[50%] mt-10"></div>
-          <CommunityPost items = {posts}/>
+      <div className="h-[33vh] max-h-58 bg-white">
+        <div className="bg-white h-[33vh] max-h-58 w-[50%] fixed">
+          <CommunityPostInput addPost={addPostHandler}/>
         </div>
+      </div>
+      <div className="h-[60vh] bg-white">
+        <div className="fixed border-[1px] w-[50%]"></div>
+        <CommunityPost items={posts}/>
       </div>
     </>
   );
