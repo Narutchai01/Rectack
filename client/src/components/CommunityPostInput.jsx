@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import UsernameTemp from './UsernameTemp.jsx';
+
+const dropdownStyle = "block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none";
+const boxStyle = "inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none";
 
 function CommunityPostInput(props) {
     const [post, setPost] = useState('');
     const [selectedRole, setSelectedRole] = useState('');
     const [selectedTags, setSelectedTags] = useState([]);
+    const [username, setUsername] = useState('Username1');
+    const [isSelected, setIsSelected] = useState(false);
+
+    const checkSelected = () => {
+        setIsSelected(true);
+    }
 
     const inputPost = (event) => {
         setPost(event.target.value);
@@ -11,7 +21,7 @@ function CommunityPostInput(props) {
 
     const saveItem = (event) => {
         event.preventDefault();
-        const itemData = { post: post, role: selectedRole, tags: selectedTags };
+        const itemData = { post: post, role: selectedRole, tags: selectedTags, username:username };
         props.addPost(itemData);
         setPost('');
         setSelectedRole('');
@@ -20,10 +30,13 @@ function CommunityPostInput(props) {
 
     const handleRoleChange = (event) => {
         setSelectedRole(event.target.value);
-        console.log(selectedRole);
     }
 
     const handleTagChange = (event) => {
+        if (selectedTags.length == 2){
+            alert("You can only select 2 tags");
+            return;
+        }
         const selectedTag = event.target.value;
         if (!selectedTags.includes(selectedTag) && selectedTags.length < 2) {
             setSelectedTags([...selectedTags, selectedTag]);
@@ -34,7 +47,6 @@ function CommunityPostInput(props) {
         setSelectedTags(selectedTags.filter(tag => tag !== clickedTag));
     }
     
-
     return (
         <>
             <form className="mx-auto w-[50%] mt-10 bg-white border border-gray-300 shadow-sm p-4 rounded-xl fixed" onSubmit={saveItem}>
@@ -52,10 +64,13 @@ function CommunityPostInput(props) {
                     <div className='ml-4'>
                         <div className="relative inline-block">
                             <select
-                                className="block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none"
-                                onChange={handleRoleChange}
+                                className= {dropdownStyle}
+                                onChange={(event) => {
+                                    handleRoleChange(event);
+                                    checkSelected(event);
+                                }}
                             >
-                                <option defaultValue="">Role</option>
+                                <option defaultValue="" disabled={isSelected}>Role</option>
                                 <option value="Option 1">Option 1</option>
                                 <option value="Option 2">Option 2</option>
                                 <option value="Option 3">Option 3</option>
@@ -63,10 +78,13 @@ function CommunityPostInput(props) {
                         </div>
                         <div className="ml-5 relative inline-block">
                             <select
-                                className="block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none"
-                                onChange={handleTagChange}
+                                className={dropdownStyle}
+                                onChange={(event) => {
+                                    handleTagChange(event);
+                                    checkSelected(event);
+                                }}
                             >
-                                <option defaultValue="">Tag</option>
+                                <option defaultValue="" disabled={isSelected}>Tag</option>
                                 <option value="Option 1">Option 1</option>
                                 <option value="Option 2">Option 2</option>
                                 <option value="Option 3">Option 3</option>
@@ -78,7 +96,7 @@ function CommunityPostInput(props) {
                     <div className="mx-2 flex justify-between">
                         {selectedRole && (
                             <span 
-                                className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none"
+                                className={boxStyle}
                                 onClick={() => setSelectedRole('')}
                             >{selectedRole}</span>
                         )}
@@ -86,7 +104,7 @@ function CommunityPostInput(props) {
                             <div className="flex">
                                 {selectedTags.map((tag, index) => (
                                     <span key={index} 
-                                        className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none"
+                                        className={boxStyle}
                                         onClick={() => handleTagClick(tag)}
                                     >{tag}</span>
                                 ))}
@@ -100,6 +118,7 @@ function CommunityPostInput(props) {
                     </div>
                 </div>
             </form>
+            <UsernameTemp changeUser={setUsername}/>
         </>
     )
 }
