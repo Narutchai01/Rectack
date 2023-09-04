@@ -5,16 +5,23 @@ const UsernameTemp = (props) => {
 
     const handleUsernameChange = (event) => {
         setSelectedUser(event.target.value);
+
     }
 
     useEffect(() => {
-        console.log(selectedUser);
+        console.log("userTemp", selectedUser);
         props.changeUser(selectedUser);
     }, [selectedUser]);
+
     return (
-        <select className="fixed right-0 bottom-0" onChange={handleUsernameChange}>
+        <select 
+            className="fixed right-0 bottom-0"
+            onChange={handleUsernameChange}
+            value={selectedUser}
+        >
             <option value="username1">username1</option>
             <option value="username2">username2</option>
+            <option value="username3">username3</option>
         </select>
     )
 }

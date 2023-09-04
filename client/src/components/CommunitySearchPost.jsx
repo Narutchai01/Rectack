@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CommunitySearchPost = () => {
+
     return (
         <>
             <div className="w-auto p-6 border border-gray-300 shadow-sm rounded-xl mb-3">

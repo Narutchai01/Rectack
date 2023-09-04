@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import UsernameTemp from './UsernameTemp.jsx';
+import { v4 as uuidv4 } from 'uuid';
 
 const dropdownStyle = "block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none";
 const boxStyle = "inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none";
@@ -21,7 +22,7 @@ function CommunityPostInput(props) {
 
     const saveItem = (event) => {
         event.preventDefault();
-        const itemData = { post: post, role: selectedRole, tags: selectedTags, username:username };
+        const itemData = { post: post, role: selectedRole, tags: selectedTags, username:username, postId: uuidv4()};
         props.addPost(itemData);
         setPost('');
         setSelectedRole('');
