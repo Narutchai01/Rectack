@@ -2,6 +2,17 @@ import CommunitySearchPost from "./CommunitySearchPost";
 import LikedPost from "./LikedPost";
 import TrendingPost from "./TrendingPost";
 
+  const data = [
+    { username: 'username1', post: 'post2', like: 0, likedBy: ['username1'] },
+    { username: 'username2', post: 'post3', like: 0, likedBy: ['username1', 'username2'] },
+    { username: 'username3', post: 'post4', like: 0, likedBy: ['username1', 'username3' , 'username2']},
+    { username: 'username4', post: 'post5', like: 0, likedBy: ['username1', 'username3' , 'username2', 'username4']},
+    { username: 'username5', post: 'post6', like: 0, likedBy: ['username1', 'username3' , 'username2', 'username4', 'username5']},
+    { username: 'username6', post: 'post7', like: 0, likedBy: ['username1', 'username3' , 'username2', 'username4', 'username5', 'username6']},
+    { username: 'username7', post: 'post8', like: 0, likedBy: ['username1', 'username3' , 'username2', 'username4', 'username5', 'username6', 'username7']},
+    { username: 'username8', post: 'post9', like: 0, likedBy: ['username1', 'username3' , 'username2', 'username4', 'username5', 'username6', 'username7', 'username8']},
+  ];
+
 const CommunitySidebar = (props) => {
   const trendingPosts = [
     {title: "Trending Post 1", username: "User1"},
@@ -19,7 +30,7 @@ const CommunitySidebar = (props) => {
     <div className="fixed w-[25%]">
         <CommunitySearchPost />
         <TrendingPost items={trendingPosts}/>
-        <LikedPost/>
+        <LikedPost data={data}/>
     </div>
   );
 };

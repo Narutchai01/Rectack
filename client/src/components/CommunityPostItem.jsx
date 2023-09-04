@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
 import PostActions from './PostActions';
+import CommunityComment from './CommunityComment';
 
 const CommunityPostItem = (props) => {
-  const { post, role, tags, postId } = props;
+  const { title, post, role, tags, postId, username } = props;
   const [likes, setLikes] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [isLikedByCurrentUser, setIsLikedByCurrentUser] = useState(false);
-  const [selectedUser, setSelectedUser] = useState('User 1');
+  const [selectedUser, setSelectedUser] = useState('username1');
   const [likedUsers, setLikedUsers] = useState([]);
-  const [userLikedPosts, setUserLikedPosts] = useState({}); // Store liked posts for each user
+  const [userLikedPosts, setUserLikedPosts] = useState({});
 
-  const usernames = ['User 1', 'User 2', 'User 3'];
-
-  console.log("CommunityPostItem", postId);
+  const usernames = ['username1', 'username2', 'username3'];
 
   const handleLike = () => {
     if (!likedUsers.includes(selectedUser)) {
-      // User hasn't liked the post, so add their like
       setLikes(likes + 1);
       setIsLikedByCurrentUser(true);
       setLikedUsers([...likedUsers, selectedUser]);
 
-      // Update userLikedPosts state to store liked posts
       setUserLikedPosts((prevLikedPosts) => ({
         ...prevLikedPosts,
         [selectedUser]: (prevLikedPosts[selectedUser] || []).concat(post),
       }));
     } else {
-      // User has liked the post, so remove their like (delike)
       setLikes(likes - 1);
       setIsLikedByCurrentUser(false);
       setLikedUsers(likedUsers.filter((user) => user !== selectedUser));
 
-      // Update userLikedPosts state to remove the unliked post
       setUserLikedPosts((prevLikedPosts) => ({
         ...prevLikedPosts,
         [selectedUser]: (prevLikedPosts[selectedUser] || []).filter(
@@ -48,7 +43,6 @@ const CommunityPostItem = (props) => {
 
   const handleUserChange = (event) => {
     setSelectedUser(event.target.value);
-    // Reset like status when the user changes
     setIsLikedByCurrentUser(
       likedUsers.includes(event.target.value) &&
         userLikedPosts[event.target.value]?.includes(post)
@@ -60,7 +54,7 @@ const CommunityPostItem = (props) => {
       <div className="inline-flex items-center m-1">
         <div className="rounded-full w-10 h-10 border-2" />
         <div>
-          <label htmlFor="userSelect">Select User:</label>
+          <span className='mx-2'>{username}</span>
           <select
             id="userSelect"
             value={selectedUser}
@@ -75,7 +69,7 @@ const CommunityPostItem = (props) => {
         </div>
       </div>
       <div className="ml-2 font-bold">
-        Lorem ipsum dolor sit amet.
+        {title}
       </div>
       <div className="flex justify-between text-xs mx-2 text-gray-500">
         {post}
@@ -107,6 +101,7 @@ const CommunityPostItem = (props) => {
           {selectedUser} liked this post
         </div>
       )}
+      <CommunityComment username={selectedUser}/>
     </div>
   );
 };

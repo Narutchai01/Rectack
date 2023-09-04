@@ -9,7 +9,6 @@ const UsernameTemp = (props) => {
     }
 
     useEffect(() => {
-        console.log("userTemp", selectedUser);
         props.changeUser(selectedUser);
     }, [selectedUser]);
 
