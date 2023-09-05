@@ -71,7 +71,7 @@ function CommunityPostInput(props) {
 
     return (
         <>
-        <form className="mx-auto w-[50%] mt-10 bg-white border border-gray-300 shadow-sm p-4 rounded-xl fixed" onSubmit={saveItem}>
+        <form className="mx-auto w-[90%] lg:w-[50%] mt-10 bg-white border border-gray-300 shadow-sm p-4 rounded-xl fixed" onSubmit={saveItem}>
             <div className="mb-4">
             <label className="mx-2 block font-bold text-md text-gray-700 mb-2">What is your question today?</label>
             <textarea
@@ -114,7 +114,7 @@ function CommunityPostInput(props) {
                 {selectedRole && (
                 <span
                     className={boxStyle}
-                    onClick={() => setSelectedRole('')}
+                    onClick={() => setSelectedRole('') }
                 >{selectedRole}</span>
                 )}
                 {selectedTags.length > 0 && (

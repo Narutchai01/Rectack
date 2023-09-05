@@ -15,11 +15,11 @@ const LikedPost = ({ data }) => {
 
             <div className="mb-4">
                 <label htmlFor="selectUser" className="font-bold text-gray-700">
-                Select a User:
+                    Select a User:
                 </label>
                 <select
                 id="selectUser"
-                className="ml-2 p-2 border border-gray-300 rounded-md"
+                className="ml-2 border border-gray-300 rounded-md"
                 value={selectedUser}
                 onChange={(e) => {
                     setSelectedUser(e.target.value);
@@ -39,7 +39,7 @@ const LikedPost = ({ data }) => {
                 
             </div> */}
 
-            <div className="pl-2 max-h-[120px] overflow-y-auto text-gray-700 text-sm font-normal">
+            <div className="pl-2 max-h-[60px] overflow-y-auto text-gray-700 text-sm font-normal">
                 <ul>
                 {likedPosts.map((post, index) => (
                     <li key={index}>

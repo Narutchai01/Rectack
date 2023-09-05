@@ -16,12 +16,12 @@ function CommunityFeed() {
   return (
     <>
       <div className="h-[33vh] max-h-58 bg-white">
-        <div className="bg-white h-[33vh] max-h-58 w-[50%] fixed">
+        <div className="bg-white h-[33vh] max-h-58 w-[90%] lg:w-[50%] fixed">
           <CommunityPostInput addPost={addPostHandler} addTitle={setTitle} />
         </div>
       </div>
       <div className="h-[60vh] bg-white">
-        <div className="fixed border-[1px] w-[50%]"></div>
+        <div className="fixed border-[1px] w-[90%] lg:w-[50%]"></div>
         <CommunityPost items={posts} title={title}/>
       </div>
     </>

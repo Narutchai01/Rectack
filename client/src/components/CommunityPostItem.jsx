@@ -37,10 +37,6 @@ const CommunityPostItem = (props) => {
     }
   };
 
-  const handleComment = () => {
-    setCommentCount(commentCount + 1);
-  };
-
   const handleUserChange = (event) => {
     setSelectedUser(event.target.value);
     setIsLikedByCurrentUser(
@@ -78,15 +74,16 @@ const CommunityPostItem = (props) => {
       <div className="w-[98%] mx-auto mt-2 flex justify-between items-center text-gray-500 mr-2">
         <PostActions
           onLike={handleLike}
-          onComment={handleComment}
           likes={likes}
           commentCount={commentCount}
           isLiked={isLikedByCurrentUser}
         />
         <div className="flex justify-between mx-2">
-          <span className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
+          {role !== '' ?(
+            <span className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
             {role}
           </span>
+          ): null}
           {tags.map((tag, index) => (
             <span key={index}>
               <span className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
@@ -101,7 +98,7 @@ const CommunityPostItem = (props) => {
           {selectedUser} liked this post
         </div>
       )}
-      <CommunityComment username={selectedUser}/>
+      <CommunityComment username={selectedUser} plusCommentCount={setCommentCount}/>
     </div>
   );
 };
