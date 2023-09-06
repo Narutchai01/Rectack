@@ -35,10 +35,6 @@ const LikedPost = ({ data }) => {
                 </select>
             </div>
 
-            {/* <div className="mb-3 max-h-[240px] overflow-y-auto">
-                
-            </div> */}
-
             <div className="pl-2 max-h-[60px] overflow-y-auto text-gray-700 text-sm font-normal">
                 <ul>
                 {likedPosts.map((post, index) => (

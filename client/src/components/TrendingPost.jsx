@@ -33,7 +33,7 @@ const TrendingPost = (props) => {
         </div>
         <div className="mt-6 text-center">
           <button 
-            className="bg-white border border-grey-700 shadow-sm text-grey-400 font-light text-sm px-6 py-1 rounded-full"
+            className="bg-white hover:bg-gray-100  border border-grey-700 shadow-sm text-grey-400 font-light text-sm px-6 py-1 rounded-full"
             onClick={handleLoadMore}  
           >
             {isLoadMore ? "Hide" : "Load More"}
