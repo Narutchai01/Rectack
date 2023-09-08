@@ -1,6 +1,6 @@
-import CommunitySearchPost from "./CommunitySearchPost";
-import LikedPost from "./LikedPost";
-import TrendingPost from "./TrendingPost";
+import LikedPost from "../CommunitySidebarComponents/LikedPost";
+import TrendingPost from "../CommunitySidebarComponents/TrendingPost";
+import CommunitySearchPost from "../CommunitySidebarComponents/CommunitySearchPost";
 
   const data = [
     { username: 'username1', post: 'post2', like: 0, likedBy: ['username1'] },

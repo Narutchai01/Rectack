@@ -1,6 +1,6 @@
 import React from 'react';
-import CommunityFeed from '../components/CommunityFeed';
-import CommunitySidebar from '../components/CommunitySidebar';
+import CommunityFeed from '../components/CommunityMain/CommunityFeed.jsx';
+import CommunitySidebar from '../components/CommunityMain/CommunitySidebar.jsx';
 
 const CommuPage = () => {
   return (

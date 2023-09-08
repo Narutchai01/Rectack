@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CommunityPost from "./CommunityPost";
-import CommunityPostInput from "./CommunityPostInput";
+import CommunityPost from "../CommunityFeedComponents/CommunityPost";
+import CommunityPostInput from "../CommunityFeedComponents/CommunityPostInput";
 
 function CommunityFeed() {
   const initialPosts = [];

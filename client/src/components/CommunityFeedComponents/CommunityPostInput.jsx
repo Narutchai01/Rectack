@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import UsernameTemp from './UsernameTemp.jsx';
 import { v4 as uuidv4 } from 'uuid';
 
 const dropdownStyle = "block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-2 sm:px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none";
 const boxStyle = "inline-block mx-2 py-2 px-2 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none";
+const smallScreenSize = window.innerWidth < 640 && 1023 < window.innerWidth < 1080;
 
 function CommunityPostInput(props) {
     const [post, setPost] = useState('');
@@ -12,6 +13,19 @@ function CommunityPostInput(props) {
     const [selectedTags, setSelectedTags] = useState([]);
     const [username, setUsername] = useState('Username1');
     const [isSelected, setIsSelected] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState(smallScreenSize);
+
+    useEffect(() => {
+        const updateIsSmallScreen = () => {
+        setIsSmallScreen(smallScreenSize);
+        };
+
+        window.addEventListener('resize', updateIsSmallScreen);
+
+        return () => {
+        window.removeEventListener('resize', updateIsSmallScreen);
+        };
+    }, []);
 
     const checkSelected = () => {
         setIsSelected(true);
@@ -41,6 +55,7 @@ function CommunityPostInput(props) {
         checkSelected();
     }
 
+
     const handleTagChange = (event) => {
         if (selectedTags.length === 2) {
         alert("You can only select 2 tags");
@@ -50,6 +65,11 @@ function CommunityPostInput(props) {
         if (!selectedTags.includes(selectedTag) && selectedTags.length < 2) {
         setSelectedTags([...selectedTags, selectedTag]);
         }
+        checkSelected();
+    }
+
+    const handleTagChangeSmallSize = (event) => {
+        setSelectedTags([event.target.value]);
         checkSelected();
     }
 
@@ -84,7 +104,7 @@ function CommunityPostInput(props) {
                     rows="3"
                     placeholder="First Line is Title
 Ask community..."
-                    className="block resize-none h-[50px] sm:h-[60px] w-full py-4 border-grey-500 border-b-2 shadow-sm sm:text-sm focus:outline-none focus:ring-red-100 focus:border-red-500"
+                    className="block pl-2 resize-none h-[50px] sm:h-[60px] w-full py-4 border-grey-500 border-b-2 shadow-sm sm:text-sm focus:outline-none focus:ring-red-100 focus:border-red-500"
                     onChange={inputPost}
                     value={post}
                     onKeyDown={handleKeyDown}
@@ -106,7 +126,7 @@ Ask community..."
                     <div className="ml-2 md:ml-5 relative inline-block">
                     <select
                         className={dropdownStyle}
-                        onChange={handleTagChange}
+                        onChange={isSmallScreen ? handleTagChangeSmallSize : handleTagChange}
                     >
                         <option defaultValue="" disabled={isSelected}>Tag</option>
                         <option value="Option 1">Option 1</option>
@@ -117,7 +137,7 @@ Ask community..."
                 </div>
             </div>
 
-            <div className="hidden mx-2 xl:flex justify-between">
+            <div className="hidden mx-2 sm:flex lg:hidden xl:flex justify-between">
                 {selectedRole && (
                 <span
                     className={boxStyle}

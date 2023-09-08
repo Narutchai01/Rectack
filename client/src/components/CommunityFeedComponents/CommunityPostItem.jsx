@@ -102,15 +102,15 @@ const CommunityPostItem = (props) => {
           commentCount={commentCount}
           isLiked={isLikedByCurrentUser}
         />
-        <div className="flex justify-between mx-2">
+        <div className="hidden sm:flex justify-between mx-2">
           {role !== '' ?(
-            <span className="hidden lg:inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
+            <span className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
             {role}
           </span>
           ): null}
           {tags.map((tag, index) => (
             <span key={index}>
-              <span className="hidden lg:inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
+              <span className="inline-block mx-2 py-2 px-5 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none">
                 {tag}
               </span>
             </span>
