@@ -24,7 +24,7 @@ const CommunityComment = ({ username, plusCommentCount }) => {
             <ul className="list-none p-0">
                 {comments.map((comment, index) => (
                     <div key={index} className={`mb-2 flex ${comment.postedBy === username ? 'justify-end' : 'justify-start'}`}>
-                        <li  className={`mx-2 inline-block p-2 rounded-lg ${comment.postedBy === username ? 'bg-red-200' : 'bg-gray-100'}`}>
+                        <li  className={`mx-2 inline-block p-2 rounded-lg ${comment.postedBy === username ? 'bg-[#EA5B37] text-white' : 'bg-gray-100'}`}>
                             <span className='pr-2'> {comment.postedBy} :</span>
                             <span dangerouslySetInnerHTML={{ __html: comment.text }}/>
                         </li>

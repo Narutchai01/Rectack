@@ -8,7 +8,8 @@ import ArticlePage from "./pages/ArticlePage"
 function App() {
   return (
     <>
-      <CommuPage/>
+      {/* <CommuPage/> */}
+      <Chatbot/>
       {/* <Navbar />
 
 
