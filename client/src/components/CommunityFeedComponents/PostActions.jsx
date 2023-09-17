@@ -1,6 +1,7 @@
 import React from 'react';
 
-const PostActions = ({ onLike, likes, commentCount }) => {
+const PostActions = ({ onLike, likes, commentCount, onToggleComment }) => {
+
     return (
         <div className="flex">
             <div className="flex items-center">
@@ -13,6 +14,7 @@ const PostActions = ({ onLike, likes, commentCount }) => {
             <div className="ml-6 flex items-center">
                 <button
                     className="w-5 h-5 bg-center bg-comment-icon bg-no-repeat bg-16"
+                    onClick={onToggleComment}
                 ></button>
                 <span className="ml-1"> {commentCount} </span>
             </div>
