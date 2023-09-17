@@ -2,7 +2,7 @@ import React, { useDebugValue, useEffect, useState } from 'react';
 import UsernameTemp from './UsernameTemp.jsx';
 import { v4 as uuidv4 } from 'uuid';
 
-const dropdownStyle = "block appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-2 sm:px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none";
+const dropdownStyle = "block w-24 appearance-none text-center bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 px-2 sm:px-6 py-2 rounded-xl text-xs font-thin shadow focus:outline-none";
 const boxStyle = "inline-block mx-2 py-2 px-2 w-auto bg-white border border-gray-300 hover:border-gray-400 focus:border-gray-400 text-gray-500 rounded-xl text-xs font-thin shadow focus:outline-none";
 const smallScreenSize = window.innerWidth < 640 && 1023 < window.innerWidth < 1080;
 
@@ -117,15 +117,18 @@ Ask community..."
             <div className="flex justify-between items-center">
                 <div className='ml-2 md:ml-4'>
                     <div className="relative inline-block">
-                    <select
-                        className={dropdownStyle}
-                        onChange={handleRoleChange}
-                    >
-                        <option defaultValue="" disabled={isSelected}>Role</option>
-                        <option value="Option 1">Option 1</option>
-                        <option value="Option 2">Option 2</option>
-                        <option value="Option 3">Option 3</option>
-                    </select>
+                        <select
+                            className={dropdownStyle}
+                            onChange={handleRoleChange}
+                        >
+                            <option defaultValue="" disabled={isSelected}>Role</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile Development">Mobile Development</option>
+                            <option value="Game Development">Game Development</option>
+                            <option value="Data Analysis">Data Analysis</option>
+                            <option value="Computer Vision">Computer Vision</option>
+                            <option value="NLP">NLP</option>
+                        </select>
                     </div>
                     <div className="ml-2 md:ml-5 relative inline-block">
                     <select
@@ -133,10 +136,9 @@ Ask community..."
                         onChange={isSmallScreen ? handleTagChangeSmallSize : handleTagChange}
                     >
                         <option defaultValue="" disabled={isSelected}>Tag</option>
-                        <option value="Option 1">Option 1</option>
-                        <option value="Option 2">Option 2</option>
-                        <option value="Option 3">Option 3</option>
-                        <option value="Option 4">Option 4</option>
+                        <option value="MEAN">MEAN</option>
+                        <option value="MEVN">MEVN</option>
+                        <option value="MERN">MERN</option>
                     </select>
                 </div>
             </div>

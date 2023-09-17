@@ -20,7 +20,7 @@ const TrendingPost = (props) => {
     <>
       <div className="w-auto p-4 border border-gray-300 shadow-sm rounded-xl my-3">
         <h1 className="mx-2 mb-5 font-bold text-xl text-gray-700">Trending Posts</h1>
-        <div className="mb-3 max-h-[240px] overflow-y-auto">
+        <div className="mb-3 max-h-[120px] 2xl:max-h-[240px] overflow-y-auto">
           {items.slice(0,displayCount).map((item, index) => (
             <div key={index} className="mx-2 mb-4">
               <div className="font-bold text-sm">{item.title}</div>
