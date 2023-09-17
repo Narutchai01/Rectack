@@ -1,5 +1,5 @@
-import React from 'react'
-import { Form } from 'react-router-dom'
+// import React from 'react'
+// import { Form } from 'react-router-dom'
 import ChatBar from '../components/Chatbot/Chatbar.jsx'
 
 const Chatbot = () => {
