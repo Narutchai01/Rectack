@@ -10,10 +10,7 @@ import StackInformationPage from "./pages/StackInformationPage"
 function App() {
   return (
     <>
-      {/* <CommuPage/> */}
-      <Chatbot/>
-      {/* <Navbar />
-
+      <Navbar/>
 
       <Routes>
         <Route path="/" element={<StackPage />} />
@@ -24,7 +21,7 @@ function App() {
         <Route path="/information" element={<StackInformationPage/>} />
         <Route path="*" element={<h1>Not Found</h1>} />
 
-      </Routes> */}
+      </Routes>
     </>
   )
 }
