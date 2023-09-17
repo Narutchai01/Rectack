@@ -14,6 +14,10 @@ function CommunityPostInput(props) {
     const [username, setUsername] = useState('Username1');
     const [isSelected, setIsSelected] = useState(false);
     const [isSmallScreen, setIsSmallScreen] = useState(smallScreenSize);
+    
+    useEffect(() => {
+        props.changeUser(username);
+    }, [username, props]);
 
     useEffect(() => {
         const updateIsSmallScreen = () => {
