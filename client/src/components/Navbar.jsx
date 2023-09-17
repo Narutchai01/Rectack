@@ -16,7 +16,7 @@ const Navbar = () => {
                 <ul className="hidden md:flex">
                     <li className="p-4"><Link to='/'>STACK</Link></li>
                     <li className="p-4"><Link to='/community'>COMMUNITY</Link></li>
-                    <li className="p-4"><Link to='/articles'>ARTICLE</Link></li>
+                    <li className="p-4"><Link to='/'>ARTICLE</Link></li>
                     <li className="p-4"><Link to='/chatbot' >CHATBOT</Link></li>
                 </ul>
                 <div onClick={ handleNav } className='block md:hidden'>
