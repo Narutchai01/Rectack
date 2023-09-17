@@ -5,13 +5,13 @@ const StackSection = (props) => {
     const { items } = props
 
     return (
-        <div>
+        <>
             <div className="grid grid-cols-2 gap-x-10 gap-y-4">
                 {items.map(element => {
                     return <StackItem {...element} key={ element.id }/>
                 })}
             </div>
-        </div>
+        </>
     )
 }
 
