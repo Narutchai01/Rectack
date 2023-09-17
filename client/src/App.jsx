@@ -1,18 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import StackPage from "./pages/StackPage"
+import CommuPage from "./pages/CommuPage"
+import Chatbot from "./pages/Chatbot"
+import ArticlePage from "./pages/ArticlePage"
+import SelectStackPage from "./pages/SelectStackPage"
+import StackInformationPage from "./pages/StackInformationPage"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div className='bg-red-500 h-16 flex justify-center items-center'>
-        <div className='text-black font-bold text-xl text-16 bg-white w-1/2 h-2/3 flex items-center justify-center rounded-md'>
-          Rectack
-        </div>
-      </div>
+      <Navbar/>
+
+      <Routes>
+        <Route path="/" element={<StackPage />} />
+        <Route path="/community" element={<CommuPage/>} />
+        <Route path="/chatbot" element={<Chatbot/>} />
+        <Route path="/articles" element={<ArticlePage/>} />
+        <Route path="/stack" element={<SelectStackPage/>} />
+        <Route path="/information" element={<StackInformationPage/>} />
+        <Route path="*" element={<h1>Not Found</h1>} />
+
+      </Routes>
     </>
   )
 }
