@@ -11,10 +11,15 @@ const CommunityPostItem = (props) => {
   const [likedUsers, setLikedUsers] = useState([]);
   const [userLikedPosts, setUserLikedPosts] = useState({});
   const [isReadMore, setIsReadMore] = useState(false);
+  const [readComment, setReadComment] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const maxContentHeight = 65;
 
   const contentRef = useRef(null);
+
+  const handleToggleComment = () => {
+    setReadComment(!readComment);
+  };
 
   useEffect(() => {
     if (contentRef.current) {
@@ -101,6 +106,7 @@ const CommunityPostItem = (props) => {
           likes={likes}
           commentCount={commentCount}
           isLiked={isLikedByCurrentUser}
+          onToggleComment={handleToggleComment}
         />
         <div className="hidden sm:flex justify-between mx-2">
           {role !== '' ?(
@@ -122,7 +128,9 @@ const CommunityPostItem = (props) => {
           {selectedUser} liked this post
         </div>
       )}
-      <CommunityComment username={selectedUser} plusCommentCount={setCommentCount}/>
+      <div className={`${readComment ? '' : 'hidden'}`}>
+        <CommunityComment username={selectedUser} plusCommentCount={setCommentCount}/>
+      </div>
     </div>
   );
 };
