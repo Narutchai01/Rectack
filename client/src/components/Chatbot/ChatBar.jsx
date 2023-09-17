@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import IconArrowRightCircle from '../../assets/IconArrowRightCircle.jsx';
 import ChatFeed from './ChatFeed.jsx';
 
-const ChatBar = (props) => {
+const ChatBar = () => {
     const [inputText, setInputText] = useState('');
     const [chatMessages, setChatMessages] = useState([]);
     const [submitted, setSubmitted] = useState(false);
@@ -11,10 +11,10 @@ const ChatBar = (props) => {
         setInputText(e.target.value);
     };
 
-    const handleSubmit = () => {
-        // Perform the same action as pressing Enter
-        handleKeyPress({ key: 'Enter' });
-    };
+    // const handleSubmit = () => {
+    //     // Perform the same action as pressing Enter
+    //     handleKeyPress({ key: 'Enter' });
+    // };
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
