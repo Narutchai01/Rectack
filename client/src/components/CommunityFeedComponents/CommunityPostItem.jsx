@@ -3,17 +3,18 @@ import PostActions from './PostActions';
 import CommunityComment from './CommunityComment';
 
 const CommunityPostItem = (props) => {
-  const { title, post, role, tags, postId, username } = props;
+  const { title, post, role, tags, postId, username, currentUser } = props;
   const [likes, setLikes] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
   const [isLikedByCurrentUser, setIsLikedByCurrentUser] = useState(false);
-  const [selectedUser, setSelectedUser] = useState('username1');
   const [likedUsers, setLikedUsers] = useState([]);
   const [userLikedPosts, setUserLikedPosts] = useState({});
   const [isReadMore, setIsReadMore] = useState(false);
   const [readComment, setReadComment] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const maxContentHeight = 65;
+
+  console.log(currentUser);
 
   const contentRef = useRef(null);
 
@@ -27,43 +28,22 @@ const CommunityPostItem = (props) => {
     }
   }, [post]);
 
-  const usernames = ['username1', 'username2', 'username3'];
-
   const handleLike = () => {
-    if (!likedUsers.includes(selectedUser)) {
+    if (!likedUsers.includes(currentUser)) {
       setLikes(likes + 1);
       setIsLikedByCurrentUser(true);
-      setLikedUsers([...likedUsers, selectedUser]);
+      setLikedUsers([...likedUsers, currentUser]);
 
-      setUserLikedPosts((prevLikedPosts) => ({
-        ...prevLikedPosts,
-        [selectedUser]: (prevLikedPosts[selectedUser] || []).concat(post),
-      }));
     } else {
       setLikes(likes - 1);
       setIsLikedByCurrentUser(false);
-      setLikedUsers(likedUsers.filter((user) => user !== selectedUser));
-
-      setUserLikedPosts((prevLikedPosts) => ({
-        ...prevLikedPosts,
-        [selectedUser]: (prevLikedPosts[selectedUser] || []).filter(
-          (likedPost) => likedPost !== post
-        ),
-      }));
+      setLikedUsers(likedUsers.filter((user) => user !== currentUser));
     }
-  };
-
-  const handleUserChange = (event) => {
-    setSelectedUser(event.target.value);
-    setIsLikedByCurrentUser(
-      likedUsers.includes(event.target.value) &&
-        userLikedPosts[event.target.value]?.includes(post)
-    );
   };
 
   const handleReadMore = () => {
     setIsReadMore(!isReadMore);
-  }
+  };
 
   return (
     <div key={postId} className="mx-auto min-h-[50px] w-auto bg-white border border-gray-300 shadow-sm p-4 rounded-xl my-4">
@@ -71,17 +51,6 @@ const CommunityPostItem = (props) => {
         <div className="rounded-full w-10 h-10 border-2" />
         <div>
           <span className='mx-2'>{username}</span>
-          <select
-            id="userSelect"
-            value={selectedUser}
-            onChange={handleUserChange}
-          >
-            {usernames.map((user) => (
-              <option key={user} value={user}>
-                {user}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
       <div className="ml-2 font-bold">
@@ -123,13 +92,8 @@ const CommunityPostItem = (props) => {
           ))}
         </div>
       </div>
-      {userLikedPosts[selectedUser]?.includes(post) && (
-        <div className="text-xs text-gray-600 mt-2">
-          {selectedUser} liked this post
-        </div>
-      )}
       <div className={`${readComment ? '' : 'hidden'}`}>
-        <CommunityComment username={selectedUser} plusCommentCount={setCommentCount}/>
+        <CommunityComment username={currentUser} plusCommentCount={setCommentCount}/>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import LikedPost from "../CommunitySidebarComponents/LikedPost";
 import TrendingPost from "../CommunitySidebarComponents/TrendingPost";
 import CommunitySearchPost from "../CommunitySidebarComponents/CommunitySearchPost";
+import { useEffect, useState } from "react";
 
   const data = [
     { username: 'username1', post: 'post2', like: 0, likedBy: ['username1'] },
@@ -26,13 +27,24 @@ const CommunitySidebar = (props) => {
     {title: "Trending Post 9", username: "User9"},
     {title: "Trending Post 10", username: "User10"},
     {title: "Trending Post 11", username: "User11"},]
-  return (
-    <div className="fixed w-[25%]">
-        <CommunitySearchPost />
-        <TrendingPost items={trendingPosts}/>
-        <LikedPost data={data}/>
-    </div>
-  );
-};
 
-export default CommunitySidebar;
+    const [filter, setFilter] = useState('');
+
+    useEffect(() => {
+      props.searchPost(filter);
+    }, [filter]);
+  
+    const handleFilter = (element) => { 
+      setFilter(element);
+    }
+  
+    return (
+      <div className="fixed w-[25%]">
+          <CommunitySearchPost searchPost={handleFilter}/>
+          <TrendingPost items={trendingPosts}/>
+          <LikedPost data={data} username={props.username}/>
+      </div>
+    );
+  };
+  
+  export default CommunitySidebar;

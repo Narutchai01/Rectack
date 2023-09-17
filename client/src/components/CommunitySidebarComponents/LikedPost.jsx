@@ -1,41 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const LikedPost = ({ data }) => {
-    const [selectedUser, setSelectedUser] = useState('');
+const LikedPost = ({ data, username }) => {
     const [likedPosts, setLikedPosts] = useState([]);
 
-    const updateLikedPosts = (user) => {
-        const filteredPosts = data.filter((post) => post.likedBy.includes(user));
+    useEffect(() => {
+        const filteredPosts = data.filter((post) => post.likedBy.includes(username));
         setLikedPosts(filteredPosts);
-    };
+    }, [data, username]);
 
     return (
         <div className="w-auto p-4 border border-gray-300 shadow-sm rounded-xl my-3">
             <h2 className="font-bold ml-2 text-xl text-gray-700 mb-2">Your Liked</h2>
 
-            <div className="mb-4">
-                <label htmlFor="selectUser" className="font-bold text-gray-700">
-                    Select a User:
-                </label>
-                <select
-                id="selectUser"
-                className="ml-2 border border-gray-300 rounded-md"
-                value={selectedUser}
-                onChange={(e) => {
-                    setSelectedUser(e.target.value);
-                    updateLikedPosts(e.target.value);
-                }}
-                >
-                <option value="" disabled>Select a user</option>
-                {data.map((post) => (
-                    <option key={post.username} value={post.username}>
-                    {post.username}
-                    </option>
-                ))}
-                </select>
-            </div>
-
-            <div className="pl-2 max-h-[60px] overflow-y-auto text-gray-700 text-sm font-normal">
+            <div className="pl-2 max-h-[60px] 2xl:max-h-[120px] overflow-y-auto text-gray-700 text-sm font-normal">
                 <ul>
                 {likedPosts.map((post, index) => (
                     <li key={index}>
